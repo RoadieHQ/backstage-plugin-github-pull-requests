@@ -19,7 +19,7 @@ import { render } from '@testing-library/react';
 import mockFetch from 'jest-fetch-mock';
 import { PullRequestsTableView } from './PullRequestsTable';
 
-describe('ExampleFetchComponent', () => {
+describe('PullRequestTable', () => {
   it('should render', async () => {
     mockFetch.mockResponse(() => new Promise(() => {}));
     const testProjectName = 'test-project-name';
