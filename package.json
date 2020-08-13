@@ -1,5 +1,5 @@
 {
-  "name": "@roadiehq/plugin-github-pull-requests",
+  "name": "@roadiehq/backstage-plugin-github-pull-requests",
   "version": "0.1.1-alpha.16",
   "main": "src/index.ts",
   "types": "src/index.ts",
