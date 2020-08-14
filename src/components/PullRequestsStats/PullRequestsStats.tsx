@@ -28,7 +28,7 @@ import {
   Select,
 } from '@material-ui/core';
 
-const cardContentStyle = { heightX: 200, width: 500, 'min-height': '178px' };
+const cardContentStyle = { heightX: 200, width: 500, minHeight: '178px' };
 
 export const PullRequestsStats: FC<{}> = () => {
   let entityCompoundName = useEntityCompoundName();
