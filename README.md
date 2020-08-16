@@ -1,12 +1,14 @@
-# github-pull-requests
+# GitHub Pull Requests Plugin for Backstage
 
-Welcome to the github-pull-requests plugin!
+![a list of pull requests in the GitHub Pull Requests](./docs/list-of-pull-requests-and-stats.png)
 
-_This plugin was created through the Backstage CLI_
+## Setup
 
-## Getting started
+1. If you have standalone app (you didn't clone this repo), then do
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/github-pull-requests](http://localhost:3000/github-pull-requests).
+```bash
+yarn add @roadiehq/backstage-plugin-github-pull-requests
+```
 
 3. Add plugin to the list of plugins:
 
@@ -18,7 +20,14 @@ export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-
 4. Add plugin API to your Backstage instance:
 
 ```ts
-// todo
+// packages/app/src/apis.ts
+import { GithubPullRequestsClient, githubPullRequestsApiRef } from '@roadiehq/backstage-plugin-github-pull-requests';
+
+export const apis = (config: ConfigApi) => {
+  // ... lots of lines omitted ...
+  builder.add(githubPullRequestsApiRef, new GithubPullRequestsClient());
+};
+
 ```
 
 5. Run app with `yarn start` and navigate to `/github-pull-requests`
@@ -31,5 +40,4 @@ export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-
 ## Links
 
 - [Backstage](https://backstage.io)
-- [Further instructons](https://roadie.io/backstage/plugins/travis-ci/)
 - Get hosted, managed Backstage for your company: https://roadie.io
