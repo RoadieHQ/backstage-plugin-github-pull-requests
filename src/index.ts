@@ -15,7 +15,4 @@
  */
 
 export { plugin } from './plugin';
-export {
-  githubPullRequestsApiRef,
-  GithubPullRequestsClient,
-} from './api/index';
+export * from './api';
