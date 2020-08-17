@@ -968,7 +968,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@backstage/catalog-model@^0.1.1-alpha.16", "@backstage/catalog-model@^0.1.1-alpha.18":
+"@backstage/catalog-model@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.1.1-alpha.18.tgz#54f2bc5b55fcd19f2c3577d5538d36dea12c9a58"
   integrity sha512-FrlrKeagTtXOi2pMhi5w9gte7CGFGReZv8EZgfR0gL0QGN+nVwGnDs4hp8oLETfFMSAs+smBV5wR58OiOIooVA==
@@ -986,7 +986,7 @@
   resolved "https://registry.yarnpkg.com/@backstage/cli-common/-/cli-common-0.1.1-alpha.18.tgz#6b82f16917710da68e0a3735675e97c3a3ea8c87"
   integrity sha512-6wY4mRMCNevIWLvNbiuUW4YmLzTSo17l9VZoiK2wC70cvFXF5JEJAXyPbk+2VfcEbOM2P49iigAL+00C/QrMeA==
 
-"@backstage/cli@^0.1.1-alpha.16", "@backstage/cli@^0.1.1-alpha.18":
+"@backstage/cli@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/cli/-/cli-0.1.1-alpha.18.tgz#8942b8961e048c453a0eafd5e46a3ef7cecb9b93"
   integrity sha512-y1PVxKo6fSPu+dUpByIqrfTVgRS8s2lvdlvloRKVX+pgrimh9SfLiVzmWkZXIgK1kFqgkhwqLGSCFfnoYzddVg==
@@ -1079,7 +1079,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.1.1-alpha.16", "@backstage/core-api@^0.1.1-alpha.18":
+"@backstage/core-api@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.1.1-alpha.18.tgz#53704e8e6d9ce72e618e4be0a5ef59cc76963b8b"
   integrity sha512-Ibsd3mtPoP02b6UdcEO9CIXJTaX06TughOEDZDaf1im/2kNwhNbN4e25mHEXIWc4S1uYd1RVLQRYBm3oXAii4g==
@@ -1095,7 +1095,7 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.1.1-alpha.16", "@backstage/core@^0.1.1-alpha.18":
+"@backstage/core@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.1.1-alpha.18.tgz#a8384b6fa65af17ee76166f2e0e4922356856ec1"
   integrity sha512-7I0eaTfF30xyX4CD/bFUnXXy22zQzQbqSFFYIGLm5j/XFi3IRb6WANoFMs1hvB/BPI/rojX9oN51PfuHBS6xHg==
@@ -1124,7 +1124,7 @@
     react-syntax-highlighter "^13.2.1"
     react-use "^15.3.3"
 
-"@backstage/dev-utils@^0.1.1-alpha.16":
+"@backstage/dev-utils@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/dev-utils/-/dev-utils-0.1.1-alpha.18.tgz#8309c4465450e891b2f69b0e5fb56f4bbd51bc5f"
   integrity sha512-Q8SoGfObknC/1PYDCT1hRMCz6/kIWxku7A+bpoXxJqikYPCqxVkLmjxRFgmQwRdd8UJwrzBFS1OGHtMnuqxOfw==
@@ -1145,7 +1145,7 @@
     react-router "6.0.0-beta.0"
     react-router-dom "6.0.0-beta.0"
 
-"@backstage/plugin-catalog@^0.1.1-alpha.16", "@backstage/plugin-catalog@^0.1.1-alpha.18":
+"@backstage/plugin-catalog@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog/-/plugin-catalog-0.1.1-alpha.18.tgz#955945c694f6e5be86126d9ac8f903f98bf5c26a"
   integrity sha512-4M3vOBzNw5pccsEnnhCz2p55xU34VKjGjgFzAuZQ/R5SMtd+YzUfLVk2VtbOj0SZkwEZjSUC3/NK7t/5n9z77Q==
@@ -1260,7 +1260,7 @@
     react-router-dom "6.0.0-beta.0"
     zen-observable "^0.8.15"
 
-"@backstage/theme@^0.1.1-alpha.16", "@backstage/theme@^0.1.1-alpha.18":
+"@backstage/theme@^0.1.1-alpha.18":
   version "0.1.1-alpha.18"
   resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.1.1-alpha.18.tgz#40adb3e798054d75ccf57c81e5fe3cb6e32cfac5"
   integrity sha512-dDTUGH/fxRGtwnR6NCK44ojlfNyFQJKVlax2CNIB/JA43+2c5G2ipDvJ8MhxDeTwwNeO+HJj1AF0AqoJcc1QdQ==
