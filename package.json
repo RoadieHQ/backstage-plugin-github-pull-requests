@@ -11,7 +11,7 @@
     "types": "dist/index.d.ts"
   },
   "scripts": {
-    "build": "rollup -c --tsBuildInfoFile",
+    "build": "rollup -c",
     "start": "backstage-cli plugin:serve",
     "lint": "backstage-cli lint",
     "test": "backstage-cli test",
