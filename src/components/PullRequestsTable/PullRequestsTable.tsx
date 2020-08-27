@@ -127,7 +127,9 @@ export const PullRequestsTableView: FC<Props> = ({
     />
   );
 };
-
+function useQuery() {
+  return new URLSearchParams(window.location.search);
+}
 export const PullRequestsTable = () => {
   let entityCompoundName = useEntityCompoundName();
   if (!entityCompoundName.name) {
@@ -141,7 +143,12 @@ export const PullRequestsTable = () => {
     'open',
   );
   const { value: projectName, loading } = useProjectName(entityCompoundName);
-  const [owner, repo] = (projectName ?? '/').split('/');
+  let [owner, repo] = (projectName ?? '/').split('/');
+  const queryParams = useQuery();
+  const [qsRepo, qsOrg] = [queryParams.get('repo'), queryParams.get('org')];
+  if (qsRepo && qsOrg) {
+    [owner, repo] = [qsOrg, qsRepo];
+  }
   const [tableProps, { retry, setPage, setPageSize }] = usePullRequests({
     state: PRStatusFilter,
     owner,
