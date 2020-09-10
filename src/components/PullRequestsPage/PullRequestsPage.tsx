@@ -27,8 +27,9 @@ import {
 } from '@backstage/core';
 import { PullRequestsTable } from '../PullRequestsTable';
 import { PullRequestsStats } from '../PullRequestsStats/PullRequestsStats';
+import { Entity } from '@backstage/catalog-model';
 
-const PullRequestsPage: FC<{}> = () => (
+const PullRequestsPage: FC<{ entity: Entity }> = ({ entity }) => (
   <Page theme={pageTheme.tool}>
     <Header
       title="Welcome to github-pull-requests!"
@@ -45,12 +46,12 @@ const PullRequestsPage: FC<{}> = () => (
       </ContentHeader>
       <Grid container spacing={3} direction="column">
         <Grid item>
-          <PullRequestsTable />
+          <PullRequestsTable entity={entity} />
         </Grid>
       </Grid>
       <Grid container direction="column" alignItems="flex-start">
         <Grid item>
-          <PullRequestsStats />
+          <PullRequestsStats entity={entity} />
         </Grid>
       </Grid>
     </Content>

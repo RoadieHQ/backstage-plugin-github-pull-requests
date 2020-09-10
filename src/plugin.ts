@@ -14,22 +14,32 @@
  * limitations under the License.
  */
 
-import { createPlugin, createRouteRef } from '@backstage/core';
+import {
+  createApiFactory,
+  createPlugin,
+  createRouteRef,
+} from '@backstage/core';
+import { githubPullRequestsApiRef, GithubPullRequestsClient } from './api';
 import PullRequestsPage from './components/PullRequestsPage';
 
 export const rootRouteRef = createRouteRef({
-  path: '/github-pull-requests',
+  path: '',
   title: 'github-pull-requests',
 });
 export const projectRouteRef = createRouteRef({
-  path: '/github-pull-requests/:kind/:optionalNamespaceAndName',
+  path: ':id',
   title: 'GitHub Pull requests for project',
 });
 
 export const plugin = createPlugin({
   id: 'github-pull-requests',
-  register({ router }) {
-    router.addRoute(rootRouteRef, PullRequestsPage);
-    router.addRoute(projectRouteRef, PullRequestsPage);
-  },
+  apis: [
+    createApiFactory(githubPullRequestsApiRef, new GithubPullRequestsClient()),
+  ],
+
+  // register
+  // register({ router }) {
+  //   router.addRoute(rootRouteRef, PullRequestsPage);
+  //   router.addRoute(projectRouteRef, PullRequestsPage);
+  // },
 });

@@ -14,5 +14,6 @@
  * limitations under the License.
  */
 
-export { plugin } from './plugin';
+export * from './plugin';
 export * from './api';
+export { Router, isPluginApplicableToEntity } from './components/Router';
