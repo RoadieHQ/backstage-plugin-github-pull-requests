@@ -20,17 +20,23 @@ export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-
 4. Add plugin API to your Backstage instance:
 
 ```ts
-// packages/app/src/apis.ts
-import { GithubPullRequestsClient, githubPullRequestsApiRef } from '@roadiehq/backstage-plugin-github-pull-requests';
+// packages/app/src/components/catalog/EntityPage.tsx
+import { Router as GithubPullRequestsRouter } from '@roadiehq/backstage-plugin-github-pull-requests';
 
-export const apis = (config: ConfigApi) => {
-  // ... lots of lines omitted ...
-  builder.add(githubPullRequestsApiRef, new GithubPullRequestsClient());
-};
+...
 
+const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
+  <EntityPageLayout>
+    ...
+    <EntityPageLayout.Content
+          path="/github-pull-requests"
+          title="Github Pull Requests"
+          element={<GithubPullRequestsRouter entity={entity} />}
+        />
+  </EntityPageLayout>
 ```
 
-5. Run app with `yarn start` and navigate to `/github-pull-requests`
+5. Run backstage app with `yarn start` and navigate to services tabs.
 
 ## Features
 

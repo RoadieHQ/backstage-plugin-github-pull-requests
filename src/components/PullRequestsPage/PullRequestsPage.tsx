@@ -17,26 +17,18 @@
 import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
 import {
-  Header,
   Page,
   pageTheme,
   Content,
   ContentHeader,
-  HeaderLabel,
   SupportButton,
 } from '@backstage/core';
 import { PullRequestsTable } from '../PullRequestsTable';
 import { PullRequestsStats } from '../PullRequestsStats/PullRequestsStats';
+import { Entity } from '@backstage/catalog-model';
 
-const PullRequestsPage: FC<{}> = () => (
+const PullRequestsPage: FC<{ entity: Entity }> = ({ entity }) => (
   <Page theme={pageTheme.tool}>
-    <Header
-      title="Welcome to github-pull-requests!"
-      subtitle="Optional subtitle"
-    >
-      <HeaderLabel label="Owner" value="Team X" />
-      <HeaderLabel label="Lifecycle" value="Alpha" />
-    </Header>
     <Content>
       <ContentHeader title="Pull requests plugin">
         <SupportButton>
@@ -45,12 +37,12 @@ const PullRequestsPage: FC<{}> = () => (
       </ContentHeader>
       <Grid container spacing={3} direction="column">
         <Grid item>
-          <PullRequestsTable />
+          <PullRequestsTable entity={entity} />
         </Grid>
       </Grid>
       <Grid container direction="column" alignItems="flex-start">
         <Grid item>
-          <PullRequestsStats />
+          <PullRequestsStats entity={entity} />
         </Grid>
       </Grid>
     </Content>
