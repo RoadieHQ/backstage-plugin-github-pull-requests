@@ -16,7 +16,6 @@
 
 import React, { FC, useState } from 'react';
 import { InfoCard, StructuredMetadataTable } from '@backstage/core';
-import { useEntityCompoundName } from '@backstage/plugin-catalog';
 import { useProjectName } from '../useProjectName';
 import { usePullRequestsStatistics } from '../usePullRequestsStatistics';
 import {
@@ -27,22 +26,16 @@ import {
   MenuItem,
   Select,
 } from '@material-ui/core';
+import { Entity } from '@backstage/catalog-model';
 
 const cardContentStyle = { heightX: 200, width: 500, minHeight: '178px' };
 
-export const PullRequestsStats: FC<{}> = () => {
-  let entityCompoundName = useEntityCompoundName();
-  if (!entityCompoundName.name) {
-    entityCompoundName = {
-      kind: 'Component',
-      name: 'backstage',
-      namespace: 'default',
-    };
-  }
+export const PullRequestsStats: FC<{
+  entity: Entity;
+  branch?: string;
+}> = ({ entity }) => {
   const [pageSize, setPageSize] = useState<number>(20);
-  const { value: projectName, loading: loadingProject } = useProjectName(
-    entityCompoundName,
-  );
+  const projectName = useProjectName(entity);
   const [owner, repo] = (projectName ?? '/').split('/');
   const [{ statsData, loading: loadingStatistics }] = usePullRequestsStatistics(
     {
@@ -60,7 +53,7 @@ export const PullRequestsStats: FC<{}> = () => {
   return (
     <InfoCard title="Pull requests statistics">
       <div style={cardContentStyle}>
-        {loadingProject || loadingStatistics ? (
+        {loadingStatistics ? (
           <CircularProgress />
         ) : (
           <Box position="relative">

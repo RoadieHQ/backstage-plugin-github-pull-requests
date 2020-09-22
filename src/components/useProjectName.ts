@@ -14,16 +14,10 @@
  * limitations under the License.
  */
 
-import { useAsync } from 'react-use';
-import { catalogApiRef, EntityCompoundName } from '@backstage/plugin-catalog';
-import { useApi } from '@backstage/core';
+import { Entity } from '@backstage/catalog-model';
 
-export const useProjectName = (name: EntityCompoundName) => {
-  const catalogApi = useApi(catalogApiRef);
+export const GITHUB_PULL_REQUESTS_ANNOTATION = 'github.com/project-slug';
 
-  const { value, loading, error } = useAsync(async () => {
-    const entity = await catalogApi.getEntityByName(name);
-    return entity?.metadata.annotations?.['github.com/project-slug'] ?? '';
-  });
-  return { value, loading, error };
+export const useProjectName = (entity: Entity) => {
+  return entity?.metadata.annotations?.[GITHUB_PULL_REQUESTS_ANNOTATION] ?? '';
 };

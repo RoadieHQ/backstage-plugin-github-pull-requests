@@ -50,7 +50,9 @@ export class GithubPullRequestsClient implements GithubPullRequestsApi {
     const maxTotalItems = paginationLinks?.endsWith('rel="last"')
       ? parseInt(lastPage[0], 10) * pageSize
       : undefined;
-
-    return { maxTotalItems, pullRequestsData: pullRequestResponse.data };
+    return {
+      maxTotalItems,
+      pullRequestsData: (pullRequestResponse.data as any) as PullsListResponseData,
+    };
   }
 }

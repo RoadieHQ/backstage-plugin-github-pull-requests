@@ -17,10 +17,10 @@ import React, { FC, useState } from 'react';
 import { Typography, Box, Paper, ButtonGroup, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Table, TableColumn } from '@backstage/core';
-import { useEntityCompoundName } from '@backstage/plugin-catalog';
 import { useProjectName } from '../useProjectName';
 import { usePullRequests, PullRequest } from '../usePullRequests';
 import { PullRequestState } from '../../types';
+import { Entity } from '@backstage/catalog-model';
 
 const generatedColumns: TableColumn[] = [
   {
@@ -128,20 +128,18 @@ export const PullRequestsTableView: FC<Props> = ({
   );
 };
 
-export const PullRequestsTable = () => {
-  let entityCompoundName = useEntityCompoundName();
-  if (!entityCompoundName.name) {
-    entityCompoundName = {
-      kind: 'Component',
-      name: 'backstage',
-      namespace: 'default',
-    };
-  }
+export const PullRequestsTable = ({
+  entity,
+}: {
+  entity: Entity;
+  branch?: string;
+}) => {
   const [PRStatusFilter, setPRStatusFilter] = useState<PullRequestState>(
     'open',
   );
-  const { value: projectName, loading } = useProjectName(entityCompoundName);
-  const [owner, repo] = (projectName ?? '/').split('/');
+  const projectName = useProjectName(entity);
+  const [owner, repo] = projectName.split('/');
+
   const [tableProps, { retry, setPage, setPageSize }] = usePullRequests({
     state: PRStatusFilter,
     owner,
@@ -179,7 +177,7 @@ export const PullRequestsTable = () => {
       <PullRequestsTableView
         {...tableProps}
         StateFilterComponent={StateFilterComponent}
-        loading={loading || tableProps.loading}
+        loading={tableProps.loading}
         retry={retry}
         onChangePageSize={setPageSize}
         onChangePage={setPage}

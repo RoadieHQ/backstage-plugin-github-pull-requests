@@ -15,24 +15,6 @@
  */
 
 import { createDevApp } from '@backstage/dev-utils';
-import { CatalogClient, catalogApiRef } from '@backstage/plugin-catalog';
-import { githubPullRequestsApiRef, GithubPullRequestsClient } from '../src/api';
 import { plugin } from '../src/plugin';
 
-createDevApp()
-  .registerPlugin(plugin)
-  .registerApiFactory({
-    deps: {},
-    factory: () => new GithubPullRequestsClient(),
-    implements: githubPullRequestsApiRef,
-  })
-  .registerApiFactory({
-    deps: {},
-    factory: () =>
-      new CatalogClient({
-        apiOrigin: 'http://localhost:7000',
-        basePath: '/catalog',
-      }),
-    implements: catalogApiRef,
-  })
-  .render();
+createDevApp().registerPlugin(plugin).render();
