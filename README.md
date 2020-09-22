@@ -1,6 +1,6 @@
 # GitHub Pull Requests Plugin for Backstage
 
-![a list of pull requests in the GitHub Pull Requests](./docs/list-of-pull-requests-and-stats.png)
+![a list of pull requests in the GitHub Pull Requests](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-github-pull-requests/master/docs/list-of-pull-requests-and-stats-tab-view.png)
 
 ## Setup
 
