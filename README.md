@@ -2,7 +2,7 @@
 
 ![a list of pull requests in the GitHub Pull Requests](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-github-pull-requests/master/docs/list-of-pull-requests-and-stats-tab-view.png)
 
-## Setup
+## Plugin Setup
 
 1. If you have standalone app (you didn't clone this repo), then do
 
@@ -38,10 +38,35 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
 
 5. Run backstage app with `yarn start` and navigate to services tabs.
 
+## Widget setup
+
+![a list of pull requests in the GitHub Pull Requests](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-github-pull-requests/master/docs/github-pullrequests-widget)
+
+1. You must install plugin by following the steps above to add widget to your Overview
+
+2. Add widget to your Overview tab:
+
+```ts
+// packages/app/src/components/catalog/EntityPage.tsx
+import { PullRequestsStatsCard } from '@roadiehq/backstage-plugin-github-pull-requests';
+
+...
+
+const OverviewContent = ({ entity }: { entity: Entity }) => (
+  <Grid container spacing={3}>
+    ...
+    <Grid item md={6}>
+      <PullRequestsStatsCard entity={entity} />
+    </Grid>
+  </Grid>
+);
+
+```
+
 ## Features
 
 - List Pull Requests for your repository, with filtering and search.
-- Show basic statistics about pull requests for your repository.
+- Show basic statistics widget about pull requests for your repository.
 
 ## Links
 
