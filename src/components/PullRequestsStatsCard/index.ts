@@ -14,7 +14,4 @@
  * limitations under the License.
  */
 
-export * from './plugin';
-export * from './api';
-export * from './components/Router';
-export * from './components/PullRequestsStatsCard';
+export { default } from './PullRequestsStatsCard';

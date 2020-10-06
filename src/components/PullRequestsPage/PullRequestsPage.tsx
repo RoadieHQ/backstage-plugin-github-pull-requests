@@ -24,7 +24,6 @@ import {
   SupportButton,
 } from '@backstage/core';
 import { PullRequestsTable } from '../PullRequestsTable';
-import { PullRequestsStats } from '../PullRequestsStats/PullRequestsStats';
 import { Entity } from '@backstage/catalog-model';
 
 const PullRequestsPage: FC<{ entity: Entity }> = ({ entity }) => (
@@ -38,11 +37,6 @@ const PullRequestsPage: FC<{ entity: Entity }> = ({ entity }) => (
       <Grid container spacing={3} direction="column">
         <Grid item>
           <PullRequestsTable entity={entity} />
-        </Grid>
-      </Grid>
-      <Grid container direction="column" alignItems="flex-start">
-        <Grid item>
-          <PullRequestsStats entity={entity} />
         </Grid>
       </Grid>
     </Content>
