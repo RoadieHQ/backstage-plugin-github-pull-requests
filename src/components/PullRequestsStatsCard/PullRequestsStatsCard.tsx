@@ -30,9 +30,8 @@ import { Entity } from '@backstage/catalog-model';
 
 const cardContentStyle = { heightX: 200, width: 500, minHeight: '178px' };
 
-export const PullRequestsStats: FC<{
+const PullRequestsStatsCard: FC<{
   entity: Entity;
-  branch?: string;
 }> = ({ entity }) => {
   const [pageSize, setPageSize] = useState<number>(20);
   const projectName = useProjectName(entity);
@@ -78,3 +77,5 @@ export const PullRequestsStats: FC<{
     </InfoCard>
   );
 };
+
+export default PullRequestsStatsCard;
