@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { default } from './PullRequestsStatsCard';
+export { default as PullRequestsStatsCard} from './PullRequestsStatsCard';
