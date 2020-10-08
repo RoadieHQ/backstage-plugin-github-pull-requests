@@ -40,7 +40,7 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
 
 ## Widget setup
 
-![a list of pull requests in the GitHub Pull Requests](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-github-pull-requests/master/docs/github-pullrequests-widget)
+![a list of pull requests in the GitHub Pull Requests](https://raw.githubusercontent.com/RoadieHQ/backstage-plugin-github-pull-requests/master/docs/github-pullrequests-widget.png)
 
 1. You must install plugin by following the steps above to add widget to your Overview
 
