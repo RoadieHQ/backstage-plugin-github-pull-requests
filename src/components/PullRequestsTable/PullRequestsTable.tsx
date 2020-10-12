@@ -29,7 +29,11 @@ const generatedColumns: TableColumn[] = [
     width: '150px',
     render: (row: Partial<PullRequest>) => (
       <Box fontWeight="fontWeightBold">
-        <a target="_blank" href={row.url!}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={row.url!}
+        >
           #{row.number}
         </a>
       </Box>
@@ -51,7 +55,11 @@ const generatedColumns: TableColumn[] = [
     width: '250px',
     render: (row: Partial<PullRequest>) => (
       <Box fontWeight="fontWeightBold">
-        <a target="_blank" href={row.creatorProfileLink!}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={row.creatorProfileLink!}
+        >
           {row.creatorNickname}
         </a>
       </Box>
