@@ -21,7 +21,7 @@ export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { Router as GithubPullRequestsRouter } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { Router as PullRequestsRouter } from '@roadiehq/backstage-plugin-github-pull-requests';
 
 ...
 
@@ -29,9 +29,9 @@ const ServiceEntityPage = ({ entity }: { entity: Entity }) => (
   <EntityPageLayout>
     ...
     <EntityPageLayout.Content
-          path="/github-pull-requests"
-          title="Github Pull Requests"
-          element={<GithubPullRequestsRouter entity={entity} />}
+          path="/pull-requests"
+          title="Pull Requests"
+          element={<PullRequestsRouter entity={entity} />}
         />
   </EntityPageLayout>
 ```
