@@ -19,17 +19,14 @@ import { Route, Routes } from 'react-router';
 import { rootRouteRef } from '../plugin';
 import PullRequestsPage from './PullRequestsPage';
 import { GITHUB_PULL_REQUESTS_ANNOTATION } from './useProjectName';
-import { WarningPanel } from '@backstage/core';
+import { MissingAnnotationEmptyState } from '@backstage/core';
 
 export const isPluginApplicableToEntity = (entity: Entity) =>
   entity?.metadata.annotations?.[GITHUB_PULL_REQUESTS_ANNOTATION];
 
 export const Router = ({ entity }: { entity: Entity }) =>
   !isPluginApplicableToEntity(entity) ? (
-    <WarningPanel title="GitHubPullRequests plugin:">
-      <pre>{GITHUB_PULL_REQUESTS_ANNOTATION}</pre> annotation is missing on the
-      entity.
-    </WarningPanel>
+    <MissingAnnotationEmptyState annotation={GITHUB_PULL_REQUESTS_ANNOTATION} />
   ) : (
     <Routes>
       <Route
