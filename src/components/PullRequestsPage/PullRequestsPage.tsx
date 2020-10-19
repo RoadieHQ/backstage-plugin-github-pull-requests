@@ -18,7 +18,6 @@ import React, { FC } from 'react';
 import { Grid } from '@material-ui/core';
 import {
   Page,
-  pageTheme,
   Content,
   ContentHeader,
   SupportButton,
@@ -27,7 +26,7 @@ import { PullRequestsTable } from '../PullRequestsTable';
 import { Entity } from '@backstage/catalog-model';
 
 const PullRequestsPage: FC<{ entity: Entity }> = ({ entity }) => (
-  <Page theme={pageTheme.tool}>
+  <Page themeId="tool">
     <Content>
       <ContentHeader title="Pull requests plugin">
         <SupportButton>
