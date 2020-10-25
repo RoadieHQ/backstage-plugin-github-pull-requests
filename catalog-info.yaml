@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-plugin-github-pull-requests
+  description: |
+    Backstage plugin to view and interact with GitHub pull requests.
+  annotations:
+    github.com/project-slug: roadiehq/backstage-plugin-github-pull-requests
+  tags:
+    - plugin
+    - oss
+spec:
+  type: library
+  owner: group:roadie
+  lifecycle: experimental
