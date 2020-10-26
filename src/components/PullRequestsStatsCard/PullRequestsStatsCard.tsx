@@ -25,14 +25,29 @@ import {
   FormHelperText,
   MenuItem,
   Select,
+  makeStyles,
 } from '@material-ui/core';
 import { Entity } from '@backstage/catalog-model';
 
-const cardContentStyle = { heightX: 200, width: 500, minHeight: '178px' };
+const useStyles = makeStyles(theme => ({
+  infoCard: {
+    marginBottom: theme.spacing(3),
+    '& + .MuiAlert-root': {
+      marginTop: theme.spacing(3),
+    },
+    '& .MuiCardContent-root': {
+      padding: theme.spacing(2, 1, 2, 2),
+    },
+    '& td': {
+      whiteSpace: 'normal',
+    },
+  },
+}));
 
 const PullRequestsStatsCard: FC<{
   entity: Entity;
 }> = ({ entity }) => {
+  const classes = useStyles();
   const [pageSize, setPageSize] = useState<number>(20);
   const projectName = useProjectName(entity);
   const [owner, repo] = (projectName ?? '/').split('/');
@@ -49,31 +64,30 @@ const PullRequestsStatsCard: FC<{
     'average time of PR until merge': statsData?.avgTimeUntilMerge,
     'merged to closed ratio': statsData?.mergedToClosedRatio,
   };
+
   return (
-    <InfoCard title="Pull requests statistics">
-      <div style={cardContentStyle}>
-        {loadingStatistics ? (
-          <CircularProgress />
-        ) : (
-          <Box position="relative">
-            <StructuredMetadataTable metadata={metadata} />
-            <Box display="flex" justifyContent="flex-end">
-              <FormControl>
-                <Select
-                  value={pageSize}
-                  onChange={event => setPageSize(Number(event.target.value))}
-                >
-                  <MenuItem value={10}>10</MenuItem>
-                  <MenuItem value={20}>20</MenuItem>
-                  <MenuItem value={50}>50</MenuItem>
-                  <MenuItem value={100}>100</MenuItem>
-                </Select>
-                <FormHelperText>Number of PRs</FormHelperText>
-              </FormControl>
-            </Box>
+    <InfoCard title="Pull requests statistics" className={classes.infoCard}>
+      {loadingStatistics ? (
+        <CircularProgress />
+      ) : (
+        <Box position="relative">
+          <StructuredMetadataTable metadata={metadata} />
+          <Box display="flex" justifyContent="flex-end">
+            <FormControl>
+              <Select
+                value={pageSize}
+                onChange={event => setPageSize(Number(event.target.value))}
+              >
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
+                <MenuItem value={50}>50</MenuItem>
+                <MenuItem value={100}>100</MenuItem>
+              </Select>
+              <FormHelperText>Number of PRs</FormHelperText>
+            </FormControl>
           </Box>
-        )}
-      </div>
+        </Box>
+      )}
     </InfoCard>
   );
 };
