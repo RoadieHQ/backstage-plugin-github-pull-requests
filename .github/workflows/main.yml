@@ -20,8 +20,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn clean
       - run: yarn install
+      - run: yarn clean
       - run: yarn run tsc
       - run: yarn run build-rollup
       - run: yarn test
