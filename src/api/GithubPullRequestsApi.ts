@@ -32,6 +32,7 @@ export type GithubPullRequestsApi = {
     page,
     branch,
     state,
+    baseUrl,
   }: {
     token: string;
     owner: string;
@@ -40,6 +41,7 @@ export type GithubPullRequestsApi = {
     page?: number;
     branch?: string;
     state?: PullRequestState;
+    baseUrl: string|undefined;
   }) => Promise<{
     maxTotalItems?: number;
     pullRequestsData: PullsListResponseData;
