@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React, { FC, useState } from 'react';
-import { Typography, Box, Paper, ButtonGroup, Button } from '@material-ui/core';
+import { Typography, Box, ButtonGroup, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Table, TableColumn } from '@backstage/core';
 import { useProjectName } from '../useProjectName';
@@ -153,43 +153,40 @@ export const PullRequestsTable = ({
     owner,
     repo,
   });
+
   const StateFilterComponent = () => (
-    <Paper>
-      <Box position="absolute" right={300} top={20}>
-        <ButtonGroup color="primary" aria-label="text primary button group">
-          <Button
-            color={PRStatusFilter === 'open' ? 'primary' : 'default'}
-            onClick={() => setPRStatusFilter('open')}
-          >
-            OPEN
-          </Button>
-          <Button
-            color={PRStatusFilter === 'closed' ? 'primary' : 'default'}
-            onClick={() => setPRStatusFilter('closed')}
-          >
-            CLOSED
-          </Button>
-          <Button
-            color={PRStatusFilter === 'all' ? 'primary' : 'default'}
-            onClick={() => setPRStatusFilter('all')}
-          >
-            ALL
-          </Button>
-        </ButtonGroup>
-      </Box>
-    </Paper>
+    <Box position="absolute" right={300} top={20}>
+      <ButtonGroup color="primary" aria-label="text primary button group">
+        <Button
+          color={PRStatusFilter === 'open' ? 'primary' : 'default'}
+          onClick={() => setPRStatusFilter('open')}
+        >
+          OPEN
+        </Button>
+        <Button
+          color={PRStatusFilter === 'closed' ? 'primary' : 'default'}
+          onClick={() => setPRStatusFilter('closed')}
+        >
+          CLOSED
+        </Button>
+        <Button
+          color={PRStatusFilter === 'all' ? 'primary' : 'default'}
+          onClick={() => setPRStatusFilter('all')}
+        >
+          ALL
+        </Button>
+      </ButtonGroup>
+    </Box>
   );
 
   return (
-    <>
-      <PullRequestsTableView
-        {...tableProps}
-        StateFilterComponent={StateFilterComponent}
-        loading={tableProps.loading}
-        retry={retry}
-        onChangePageSize={setPageSize}
-        onChangePage={setPage}
-      />
-    </>
+    <PullRequestsTableView
+      {...tableProps}
+      StateFilterComponent={StateFilterComponent}
+      loading={tableProps.loading}
+      retry={retry}
+      onChangePageSize={setPageSize}
+      onChangePage={setPage}
+    />
   );
 };

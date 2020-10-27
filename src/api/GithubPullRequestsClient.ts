@@ -27,6 +27,7 @@ export class GithubPullRequestsClient implements GithubPullRequestsApi {
     pageSize = 5,
     page,
     state = 'all',
+    baseUrl,
   }: {
     token: string;
     owner: string;
@@ -34,11 +35,12 @@ export class GithubPullRequestsClient implements GithubPullRequestsApi {
     pageSize?: number;
     page?: number;
     state?: PullRequestState;
+    baseUrl: string|undefined;
   }): Promise<{
     maxTotalItems?: number;
     pullRequestsData: PullsListResponseData;
   }> {
-    const pullRequestResponse = await new Octokit({ auth: token }).pulls.list({
+    const pullRequestResponse = await new Octokit({ auth: token, ...(baseUrl && {baseUrl}) }).pulls.list({
       repo,
       state,
       per_page: pageSize,

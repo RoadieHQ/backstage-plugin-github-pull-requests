@@ -17,8 +17,8 @@ import { useAsyncRetry } from 'react-use';
 import { githubPullRequestsApiRef } from '../api/GithubPullRequestsApi';
 import { useApi, githubAuthApiRef } from '@backstage/core';
 import { PullsListResponseData } from '@octokit/types';
-
 import moment from 'moment';
+import { useBaseUrl } from './useBaseUrl';
 import { PullRequestState } from '../types';
 
 export type PullRequestStats = {
@@ -64,6 +64,7 @@ export function usePullRequestsStatistics({
 }) {
   const api = useApi(githubPullRequestsApiRef);
   const auth = useApi(githubAuthApiRef);
+  const baseUrl = useBaseUrl();
 
   const { loading, value: statsData, error } = useAsyncRetry<
     PullRequestStats
@@ -84,6 +85,7 @@ export function usePullRequestsStatistics({
         page: 1,
         branch,
         state,
+        baseUrl,
       })
       .then(
         ({ pullRequestsData }: { pullRequestsData: PullsListResponseData }) => {

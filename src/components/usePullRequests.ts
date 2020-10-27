@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /*
  * Copyright 2020 RoadieHQ
  *
@@ -21,6 +20,7 @@ import { useApi, githubAuthApiRef } from '@backstage/core';
 import { PullsListResponseData } from '@octokit/types';
 import moment from 'moment';
 import { PullRequestState } from '../types';
+import { useBaseUrl } from './useBaseUrl';
 
 export type PullRequest = {
   id: number;
@@ -46,7 +46,7 @@ export function usePullRequests({
 }) {
   const api = useApi(githubPullRequestsApiRef);
   const auth = useApi(githubAuthApiRef);
-
+  const baseUrl = useBaseUrl();
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(5);
@@ -72,6 +72,7 @@ export function usePullRequests({
           page: page + 1,
           branch,
           state,
+          baseUrl,
         })
         .then(
           ({
