@@ -16,7 +16,7 @@
 import React, { FC, useState } from 'react';
 import { Typography, Box, ButtonGroup, Button, makeStyles } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import { Table, TableColumn, StatusOK } from '@backstage/core';
+import { Table, TableColumn } from '@backstage/core';
 import { useProjectName } from '../useProjectName';
 import { usePullRequests, PullRequest } from '../usePullRequests';
 import { PullRequestState } from '../../types';
@@ -34,13 +34,28 @@ const useStyles = makeStyles(() => ({
       content: '""',
     },
   },
-
+  open: {
+    '&::before': {
+      backgroundColor: '##28A745',
+    },
+  },
   closed: {
     '&::before': {
       backgroundColor: '#6F42C1',
     },
   },
 }));
+
+const StatusOpen: FC<{}> = props => {
+  const classes = useStyles(props);
+  return (
+    <span
+    className={`${classes.status} ${classes.open}`}
+      aria-label="Status Closed"
+      {...props}
+    />
+  );
+};
 
 const StatusClosed: FC<{}> = props => {
   const classes = useStyles(props);
@@ -76,7 +91,7 @@ const generatedColumns: TableColumn[] = [
     highlight: true,
     render: (row: Partial<PullRequest>) => (
       <Typography variant="body2" noWrap>
-        {row.state === 'closed' ? <StatusClosed /> : <StatusOK /> } {row.title}
+        {row.state === 'closed' ? <StatusClosed /> : <StatusOpen /> } {row.title}
       </Typography>
     ),
   },
