@@ -34,6 +34,7 @@ export type PullRequestStatsCount = {
 function calculateStatistics(pullRequestsData: PullsListResponseData) {
   return pullRequestsData.reduce<PullRequestStatsCount>(
     (acc, curr) => {
+      console.log(curr.merged_at);
       acc.avgTimeUntilMerge += curr.merged_at
         ? new Date(curr.merged_at).getTime() -
           new Date(curr.created_at).getTime()
@@ -72,7 +73,7 @@ export function usePullRequestsStatistics({
     const token = await auth.getAccessToken(['repo']);
     if (!repo) {
       return {
-        avgTimeUntilMerge: '0 min',
+        avgTimeUntilMerge: 'Never',
         mergedToClosedRatio: '0%',
       };
     }
@@ -90,6 +91,10 @@ export function usePullRequestsStatistics({
       .then(
         ({ pullRequestsData }: { pullRequestsData: PullsListResponseData }) => {
           const calcResult = calculateStatistics(pullRequestsData);
+          if(calcResult.closedCount === 0 || calcResult.mergedCount === 0) return {
+            avgTimeUntilMerge: 'Never',
+            mergedToClosedRatio: '0%',
+          }
           const avgTimeUntilMergeDiff = moment.duration(
             calcResult.avgTimeUntilMerge / calcResult.mergedCount,
           );
@@ -100,7 +105,7 @@ export function usePullRequestsStatistics({
             mergedToClosedRatio: `${Math.round(
               (calcResult.mergedCount / calcResult.closedCount) * 100,
             )}%`,
-          };
+          }
         },
       );
   }, [pageSize, repo, owner]);
