@@ -34,7 +34,6 @@ export type PullRequestStatsCount = {
 function calculateStatistics(pullRequestsData: PullsListResponseData) {
   return pullRequestsData.reduce<PullRequestStatsCount>(
     (acc, curr) => {
-      console.log(curr.merged_at);
       acc.avgTimeUntilMerge += curr.merged_at
         ? new Date(curr.merged_at).getTime() -
           new Date(curr.created_at).getTime()
