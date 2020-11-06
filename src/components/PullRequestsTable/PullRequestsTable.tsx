@@ -14,13 +14,44 @@
  * limitations under the License.
  */
 import React, { FC, useState } from 'react';
-import { Typography, Box, ButtonGroup, Button } from '@material-ui/core';
+import { Typography, Box, ButtonGroup, Button, makeStyles } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import { Table, TableColumn } from '@backstage/core';
+import { Table, TableColumn, StatusOK } from '@backstage/core';
 import { useProjectName } from '../useProjectName';
 import { usePullRequests, PullRequest } from '../usePullRequests';
 import { PullRequestState } from '../../types';
 import { Entity } from '@backstage/catalog-model';
+
+const useStyles = makeStyles(() => ({
+  status: {
+    fontWeight: 500,
+    '&::before': {
+      width: '0.7em',
+      height: '0.7em',
+      display: 'inline-block',
+      marginRight: 8,
+      borderRadius: '50%',
+      content: '""',
+    },
+  },
+
+  closed: {
+    '&::before': {
+      backgroundColor: '#6F42C1',
+    },
+  },
+}));
+
+const StatusClosed: FC<{}> = props => {
+  const classes = useStyles(props);
+  return (
+    <span
+    className={`${classes.status} ${classes.closed}`}
+      aria-label="Status Closed"
+      {...props}
+    />
+  );
+};
 
 const generatedColumns: TableColumn[] = [
   {
@@ -45,7 +76,7 @@ const generatedColumns: TableColumn[] = [
     highlight: true,
     render: (row: Partial<PullRequest>) => (
       <Typography variant="body2" noWrap>
-        {row.title}
+        {row.state === 'closed' ? <StatusClosed /> : <StatusOK /> } {row.title}
       </Typography>
     ),
   },
