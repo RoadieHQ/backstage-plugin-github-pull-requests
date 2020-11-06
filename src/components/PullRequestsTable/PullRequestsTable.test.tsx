@@ -55,6 +55,7 @@ describe('PullRequestTable', () => {
               id: 464572082,
               number: 1862,
               title: testTitle,
+              state: 'open',
               url: 'https://api.github.com/repos/spotify/backstage/pulls/1862',
               createdTime: '2 hours ago',
               creatorNickname: 'dependabot-preview[bot]',
