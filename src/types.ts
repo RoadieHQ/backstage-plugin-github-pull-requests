@@ -1,1 +1,1 @@
-export type PullRequestState = 'open' | 'closed' | 'all';
+export type PullRequestState = 'open' | 'closed' | 'merged' | 'draft' | 'all';
