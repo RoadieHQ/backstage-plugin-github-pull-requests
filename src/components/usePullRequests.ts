@@ -30,6 +30,8 @@ export type PullRequest = {
   updatedTime: string;
   createdTime: string;
   state: string;
+  draft: boolean;
+  merged: string|null;
   creatorNickname: string;
   creatorProfileLink: string;
 };
@@ -97,12 +99,16 @@ export function usePullRequests({
                 updated_at,
                 user,
                 state,
+                draft,
+                merged_at,
               }) => ({
                 url: html_url,
                 id,
                 number,
                 title,
                 state,
+                draft,
+                merged: merged_at,
                 creatorNickname: user.login,
                 creatorProfileLink: user.html_url,
                 createdTime: getElapsedTime(created_at),
