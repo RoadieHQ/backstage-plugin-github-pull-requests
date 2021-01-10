@@ -16,63 +16,62 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import mockFetch from 'jest-fetch-mock';
-import { PullRequestsTableView } from './PullRequestsTable';
+import {
+  ApiRegistry,
+  ApiProvider,
+  configApiRef,
+  githubAuthApiRef,
+} from '@backstage/core';
+import { rest } from 'msw';
+import { msw } from '@backstage/test-utils';
+import { setupServer } from 'msw/node';
+import { githubPullRequestsApiRef } from '../..';
+import { GithubPullRequestsClient } from '../../api';
+import { entityMock, openPullsRequestMock } from '../../mocks/mocks';
+import { PullRequestsTable } from './PullRequestsTable';
 
-describe('PullRequestTable', () => {
-  it('should render', async () => {
-    mockFetch.mockResponse(() => new Promise(() => {}));
-    const testProjectName = 'test-project-name';
-    const rendered = render(
-      <PullRequestsTableView
-        projectName={testProjectName}
-        loading={false}
-        pageSize={10}
-        page={0}
-        StateFilterComponent={() => <></>}
-        prData={[]}
-        retry={() => {}}
-        onChangePage={() => {}}
-        onChangePageSize={() => {}}
-        total={0}
-      />,
+const mockGithubAuth = {
+  getAccessToken: async (_: string[]) => 'test-token',
+};
+
+const config = {
+  getOptionalConfigArray: (_: string) => [
+    { getOptionalString: (_: string) => undefined },
+  ],
+};
+
+const apis = ApiRegistry.from([
+  [configApiRef, config],
+  [githubAuthApiRef, mockGithubAuth],
+  [githubPullRequestsApiRef, new GithubPullRequestsClient()],
+]);
+
+describe('PullRequestsTable', () => {
+  const worker = setupServer();
+  msw.setupDefaultHandlers(worker);
+
+  beforeEach(() => {
+    worker.use(
+      rest.get(
+        'https://api.github.com/repos/RoadieHQ/backstage-plugin-argo-cd/pulls?state=open&per_page=5&page=1',
+        (_, res, ctx) => res(ctx.json(openPullsRequestMock)),
+      ),
     );
-    expect(await rendered.findByText(testProjectName)).toBeInTheDocument();
   });
-  it('should render table list item', async () => {
-    mockFetch.mockResponse(() => new Promise(() => {}));
-    const testTitle = 'Add migration for entity_search column fix';
+
+  it('should display a table with data from requests', async () => {
     const rendered = render(
-      <>
-        <PullRequestsTableView
-          projectName="test"
-          loading={false}
-          pageSize={10}
-          page={0}
-          StateFilterComponent={() => <></>}
-          prData={[
-            {
-              id: 464572082,
-              number: 1862,
-              title: testTitle,
-              state: 'open',
-              draft: true,
-              merged: null,
-              url: 'https://api.github.com/repos/spotify/backstage/pulls/1862',
-              createdTime: '2 hours ago',
-              creatorNickname: 'dependabot-preview[bot]',
-              creatorProfileLink: 'https://github.com/apps/dependabot-preview',
-              updatedTime: '2 hours ago',
-            },
-          ]}
-          retry={() => {}}
-          onChangePage={() => {}}
-          onChangePageSize={() => {}}
-          total={0}
-        />
-        ,
-      </>,
+      <ApiProvider apis={apis}>
+        <PullRequestsTable entity={entityMock} />
+      </ApiProvider>,
     );
-    expect(await rendered.findByText(testTitle)).toBeInTheDocument();
+    expect(
+      await rendered.findByText('add test with msw library'),
+    ).toBeInTheDocument();
+    expect(await rendered.findByText('muenchdo')).toBeInTheDocument();
+    expect(await rendered.findByText('mcalus3')).toBeInTheDocument();
+    expect(
+      await rendered.findByText('Bump ini from 1.3.5 to 1.3.8'),
+    ).toBeInTheDocument();
   });
 });
