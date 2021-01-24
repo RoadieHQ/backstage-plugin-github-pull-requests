@@ -964,13 +964,14 @@
     yup "^0.29.3"
 
 "@backstage/catalog-model@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.0.tgz#35a29e50326b8fcbd5cec51473245db2958de487"
-  integrity sha512-vfnOum7UYg9+9j6gfUlnRlVZFBkJUPZnpwB04o12WBonqUhzw7OHjcZ1FXKmbiyo/yJJmrcdsSHCg1HuQgC0iA==
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@backstage/catalog-model/-/catalog-model-0.7.1.tgz#56089c9e027322241f621398e71c33153f2a83c8"
+  integrity sha512-S3hU1RuUqBVy+Xhrr+XIybBLYaXGJTEbOG25GjePCpEujclZlMl8ZWzzsVFluZ8+ydeYERPXweuDi2l7feOHBw==
   dependencies:
     "@backstage/config" "^0.1.2"
     "@types/json-schema" "^7.0.5"
     "@types/yup" "^0.29.8"
+    ajv "^7.0.3"
     json-schema "^0.2.5"
     lodash "^4.17.15"
     uuid "^8.0.0"
@@ -1090,7 +1091,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@backstage/core-api@^0.2.1", "@backstage/core-api@^0.2.5":
+"@backstage/core-api@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@backstage/core-api/-/core-api-0.2.5.tgz#4866f2ac76fea7d5963af229c41d7d8205725a5b"
   integrity sha512-0DGFywT3O+xqcirAepk4WsMVwsM1FB6uxxsNll4ix0Kdlpn/KISIZIoXD26IGW9IjP4sJUs0cugQsbHLir1/Hw==
@@ -1125,18 +1126,19 @@
     react-use "^15.3.3"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.3.0":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.3.2.tgz#a8209126d5076cf4a8b9bd632fe4e5e2edb62916"
-  integrity sha512-i5d+Wh8js4qEWoAsPY5L7HVSWpumr1OhfF2dUCGYdyW6AMqVJPca6+n6zp1Rg2CO+J9norp44XAVVCbyhtUpig==
+"@backstage/core@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.4.0.tgz#a8c138a424a8ceeea571c89f6431da3d2587127a"
+  integrity sha512-YqbtrTvGJYQ3e89MomzTLtgE1VvtrhFV1xgI9JfOQqN9xzb2BGz5PpdYy1Z9wHpO9zyWEFC/EeYnZnFeq/xpJQ==
   dependencies:
-    "@backstage/config" "^0.1.1"
-    "@backstage/core-api" "^0.2.1"
-    "@backstage/theme" "^0.2.1"
+    "@backstage/config" "^0.1.2"
+    "@backstage/core-api" "^0.2.5"
+    "@backstage/theme" "^0.2.2"
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.45"
     "@types/dagre" "^0.7.44"
+    "@types/prop-types" "^15.7.3"
     "@types/react" "^16.9"
     "@types/react-sparklines" "^1.7.0"
     classnames "^2.2.6"
@@ -1164,13 +1166,13 @@
     remark-gfm "^1.0.0"
     zen-observable "^0.8.15"
 
-"@backstage/core@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.4.0.tgz#a8c138a424a8ceeea571c89f6431da3d2587127a"
-  integrity sha512-YqbtrTvGJYQ3e89MomzTLtgE1VvtrhFV1xgI9JfOQqN9xzb2BGz5PpdYy1Z9wHpO9zyWEFC/EeYnZnFeq/xpJQ==
+"@backstage/core@^0.4.3":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@backstage/core/-/core-0.4.4.tgz#83d5ce5c8dd8a9803badc1dde389b5bde963e959"
+  integrity sha512-UEZhPBC7DAZEOCRAYQ9XcXch5JDuPn+wYNp65Ik60SSz/RFjqhq8D3P7V074cMQqWLAddVDj5dUrNeN8N1gAUQ==
   dependencies:
     "@backstage/config" "^0.1.2"
-    "@backstage/core-api" "^0.2.5"
+    "@backstage/core-api" "^0.2.8"
     "@backstage/theme" "^0.2.2"
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"
@@ -1365,14 +1367,7 @@
     react-router-dom "6.0.0-beta.0"
     zen-observable "^0.8.15"
 
-"@backstage/theme@^0.2.0":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.2.3.tgz#434e7fbc1645221c79e414d3a1be9be8c69e1f1c"
-  integrity sha512-afoozMl4BWpjj/pmp9jWvGgrmgFVhw9FlVGK71FWTCPTqBO46WCDPopdX3Ui9ZYFNDaNxN6vvmyNN4HUWzO/Ow==
-  dependencies:
-    "@material-ui/core" "^4.11.0"
-
-"@backstage/theme@^0.2.1", "@backstage/theme@^0.2.2":
+"@backstage/theme@^0.2.0", "@backstage/theme@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@backstage/theme/-/theme-0.2.2.tgz#461baa2c97356f936eb0bc28567dfff3aeff9cd1"
   integrity sha512-7d/0IHS9Rz6+1ZeiIfh170wh0hSBx6Ybr+L0wKM+uyPqE6pxtQVRUarRR2rZGD6hxipPnuF9myIw9YKmxef24g==
@@ -2918,6 +2913,16 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5, ajv
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^7.0.3:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.0.4.tgz#827e5f5ae32f5e5c1637db61f253a112229b5e2f"
+  integrity sha512-xzzzaqgEQfmuhbhAoqjJ8T/1okb6gAzXn/eQRNpAN1AEUoHJTNF9xCDRTtf/s3SKldtZfa+RJeTs+BQq+eZ/sw==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 alphanum-sort@^1.0.0:
@@ -8102,6 +8107,11 @@ json-schema-traverse@^0.4.1:
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
   integrity sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==
 
+json-schema-traverse@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz#ae7bcb3656ab77a73ba5c49bf654f38e6b6860e2"
+  integrity sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
+
 json-schema@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
@@ -9734,12 +9744,14 @@ parse-package-name@^0.1.0:
   integrity sha1-P0Tdg4/rTCvkvzGLrkR313BrreQ=
 
 parse-path@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/parse-path/-/parse-path-4.0.2.tgz#ef14f0d3d77bae8dd4bc66563a4c151aac9e65aa"
-  integrity sha512-HSqVz6iuXSiL8C1ku5Gl1Z5cwDd9Wo0q8CoffdAghP6bz8pJa1tcMC+m4N+z6VAS8QdksnIGq1TB6EgR4vPR6w==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/parse-path/-/parse-path-4.0.3.tgz#82d81ec3e071dcc4ab49aa9f2c9c0b8966bb22bf"
+  integrity sha512-9Cepbp2asKnWTJ9x2kpw6Fe8y9JDbqwahGCTvklzd/cEq5C5JC59x2Xb0Kx+x0QZ8bvNquGO8/BWP0cwBHzSAA==
   dependencies:
     is-ssh "^1.3.0"
     protocols "^1.4.0"
+    qs "^6.9.4"
+    query-string "^6.13.8"
 
 parse-url@^5.0.0:
   version "5.0.2"
@@ -10548,6 +10560,15 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+query-string@^6.13.8:
+  version "6.13.8"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.8.tgz#8cf231759c85484da3cf05a851810d8e825c1159"
+  integrity sha512-jxJzQI2edQPE/NPUOusNjO/ZOGqr1o2OBa/3M00fU76FsLXDVbJDv/p7ng5OdQyorKrkRz1oqfwmbe5MAMePQg==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -11169,6 +11190,11 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
+
+require-from-string@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
+  integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
 require-main-filename@^2.0.0:
   version "2.0.0"
@@ -11928,6 +11954,11 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
+split-on-first@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
+  integrity sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -12077,6 +12108,11 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+  integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
 string-hash@^1.1.1:
   version "1.1.3"
