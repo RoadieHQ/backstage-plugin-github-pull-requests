@@ -15,5 +15,7 @@
  */
 
 import '@testing-library/jest-dom';
+import fetch from 'node-fetch';
 
-require('jest-fetch-mock').enableMocks();
+// @ts-ignore
+global.fetch = fetch;
