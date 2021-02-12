@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { InfoCard, StructuredMetadataTable } from '@backstage/core';
 import { useProjectName } from '../useProjectName';
 import { usePullRequestsStatistics } from '../usePullRequestsStatistics';

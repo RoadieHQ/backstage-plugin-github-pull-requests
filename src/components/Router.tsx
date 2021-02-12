@@ -28,6 +28,6 @@ export const Router = ({ entity }: { entity: Entity }) =>
     <MissingAnnotationEmptyState annotation={GITHUB_PULL_REQUESTS_ANNOTATION} />
   ) : (
     <Routes>
-      <Route path={`/`} element={<PullRequestsPage entity={entity} />} />
+      <Route path="/" element={<PullRequestsPage entity={entity} />} />
     </Routes>
   );
