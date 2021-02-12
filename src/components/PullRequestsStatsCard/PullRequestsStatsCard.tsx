@@ -44,9 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PullRequestsStatsCard: FC<{
-  entity: Entity;
-}> = ({ entity }) => {
+const PullRequestsStatsCard = ({ entity }: { entity: Entity }) => {
   const classes = useStyles();
   const [pageSize, setPageSize] = useState<number>(20);
   const projectName = useProjectName(entity);

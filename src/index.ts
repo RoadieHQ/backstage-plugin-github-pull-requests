@@ -14,7 +14,30 @@
  * limitations under the License.
  */
 
-export * from './plugin';
+export {
+  /**
+   * @deprecated From 0.2.0 new name 'pullRequestsPlugin' should be used
+   */
+  githubPullRequestsPlugin as plugin,
+  githubPullRequestsPlugin,
+  EntityGithubPullRequestsContent,
+  EntityGithubPullRequestsOverviewCard,
+} from './plugin';
 export * from './api';
-export * from './components/Router';
-export * from './components/PullRequestsStatsCard';
+export {
+  /**
+   * @deprecated From 0.2.0 composability API should be used
+   */
+  Router,
+  /**
+   * @deprecated From 0.2.0 new name 'isPullRequestsAvalilable' should be used
+   */
+  isGithubPullRequestsAvailable as isPluginApplicableToEntity,
+  isGithubPullRequestsAvailable,
+} from './components/Router';
+export {
+  /**
+   * @deprecated From 0.2.0 composability API should be used
+   */
+  PullRequestsStatsCard,
+} from './components/PullRequestsStatsCard';
