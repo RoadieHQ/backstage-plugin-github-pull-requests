@@ -98,7 +98,7 @@ export function usePullRequests({
                 created_at,
                 updated_at,
                 user,
-                state,
+                state: pr_state,
                 draft,
                 merged_at,
               }) => ({
@@ -106,7 +106,7 @@ export function usePullRequests({
                 id,
                 number,
                 title,
-                state,
+                state: pr_state,
                 draft,
                 merged: merged_at,
                 creatorNickname: user.login,
