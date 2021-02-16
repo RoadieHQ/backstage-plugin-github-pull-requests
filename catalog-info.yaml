@@ -6,6 +6,7 @@ metadata:
     Backstage plugin to view and interact with GitHub pull requests.
   annotations:
     github.com/project-slug: roadiehq/backstage-plugin-github-pull-requests
+    backstage.io/techdocs-ref: url:https://github.com/RoadieHQ/backstage-plugin-github-pull-requests/tree/main
   tags:
     - plugin
     - oss
@@ -14,5 +15,5 @@ metadata:
       title: NPM
 spec:
   type: library
-  owner: group:roadie
-  lifecycle: experimental
+  owner: group:engineering
+  lifecycle: production
