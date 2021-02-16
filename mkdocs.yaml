@@ -1,0 +1,7 @@
+site_name: 'backstage-plugin-github-pull-requests'
+
+nav:
+  - Releasing: releasing.md
+
+plugins:
+  - techdocs-core
