@@ -36,7 +36,7 @@ const mockGithubAuth = {
 
 const config = {
   getOptionalConfigArray: (_: string) => [
-    { getOptionalString: (_: string) => undefined },
+    { getOptionalString: (_s: string) => undefined },
   ],
 };
 
