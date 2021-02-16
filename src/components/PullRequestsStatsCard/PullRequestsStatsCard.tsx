@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { InfoCard, StructuredMetadataTable } from '@backstage/core';
 import { useProjectName } from '../useProjectName';
 import { usePullRequestsStatistics } from '../usePullRequestsStatistics';
@@ -44,9 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PullRequestsStatsCard: FC<{
-  entity: Entity;
-}> = ({ entity }) => {
+const PullRequestsStatsCard = ({ entity }: { entity: Entity }) => {
   const classes = useStyles();
   const [pageSize, setPageSize] = useState<number>(20);
   const projectName = useProjectName(entity);

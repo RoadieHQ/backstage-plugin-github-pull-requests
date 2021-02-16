@@ -16,22 +16,18 @@
 import React from 'react';
 import { Entity } from '@backstage/catalog-model';
 import { Route, Routes } from 'react-router';
-import { rootRouteRef } from '../plugin';
 import PullRequestsPage from './PullRequestsPage';
 import { GITHUB_PULL_REQUESTS_ANNOTATION } from './useProjectName';
 import { MissingAnnotationEmptyState } from '@backstage/core';
 
-export const isPluginApplicableToEntity = (entity: Entity) =>
+export const isGithubPullRequestsAvailable = (entity: Entity) =>
   entity?.metadata.annotations?.[GITHUB_PULL_REQUESTS_ANNOTATION];
 
 export const Router = ({ entity }: { entity: Entity }) =>
-  !isPluginApplicableToEntity(entity) ? (
+  !isGithubPullRequestsAvailable(entity) ? (
     <MissingAnnotationEmptyState annotation={GITHUB_PULL_REQUESTS_ANNOTATION} />
   ) : (
     <Routes>
-      <Route
-        path={`/${rootRouteRef.path}`}
-        element={<PullRequestsPage entity={entity} />}
-      />
+      <Route path="/" element={<PullRequestsPage entity={entity} />} />
     </Routes>
   );

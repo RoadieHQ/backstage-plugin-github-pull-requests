@@ -16,19 +16,41 @@
 
 import {
   createApiFactory,
+  createComponentExtension,
   createPlugin,
+  createRoutableExtension,
   createRouteRef,
 } from '@backstage/core';
 import { githubPullRequestsApiRef, GithubPullRequestsClient } from './api';
 
-export const rootRouteRef = createRouteRef({
-  path: '',
+export const entityContentRouteRef = createRouteRef({
   title: 'github-pull-requests',
 });
 
-export const plugin = createPlugin({
+export const githubPullRequestsPlugin = createPlugin({
   id: 'github-pull-requests',
   apis: [
     createApiFactory(githubPullRequestsApiRef, new GithubPullRequestsClient()),
   ],
+  routes: {
+    entityContent: entityContentRouteRef,
+  },
 });
+
+export const EntityGithubPullRequestsContent = githubPullRequestsPlugin.provide(
+  createRoutableExtension({
+    component: () => import('./components/Router').then(m => m.Router),
+    mountPoint: entityContentRouteRef,
+  }),
+);
+
+export const EntityGithubPullRequestsOverviewCard = githubPullRequestsPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () =>
+        import('./components/PullRequestsStatsCard').then(
+          m => m.PullRequestsStatsCard,
+        ),
+    },
+  }),
+);

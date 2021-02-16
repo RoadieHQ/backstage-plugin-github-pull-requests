@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import { plugin } from './plugin';
+import { githubPullRequestsPlugin } from './plugin';
 
 describe('github-pull-requests', () => {
   it('should export plugin', () => {
-    expect(plugin).toBeDefined();
+    expect(githubPullRequestsPlugin).toBeDefined();
   });
 });
