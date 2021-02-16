@@ -9,6 +9,9 @@ metadata:
   tags:
     - plugin
     - oss
+  links:
+    - url: https://www.npmjs.com/package/@roadiehq/backstage-plugin-github-pull-requests
+      title: NPM
 spec:
   type: library
   owner: group:roadie
