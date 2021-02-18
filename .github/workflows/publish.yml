@@ -22,7 +22,6 @@ jobs:
         with:
           tag_name: 'v%s'
           tag_message: 'v%s'
-          commit_pattern: "^Release (\\S+)"
           workspace: '.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
