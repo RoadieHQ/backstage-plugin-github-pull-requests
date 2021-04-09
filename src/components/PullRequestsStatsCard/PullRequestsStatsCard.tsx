@@ -28,6 +28,7 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { Entity } from '@backstage/catalog-model';
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 const useStyles = makeStyles(theme => ({
   infoCard: {
@@ -44,7 +45,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PullRequestsStatsCard = ({ entity }: { entity: Entity }) => {
+type Props = {
+  /** @deprecated The entity is now grabbed from context instead */
+  entity?: Entity;
+};
+
+const PullRequestsStatsCard = (_props: Props) => {
+  const { entity } = useEntity();
   const classes = useStyles();
   const [pageSize, setPageSize] = useState<number>(20);
   const projectName = useProjectName(entity);
