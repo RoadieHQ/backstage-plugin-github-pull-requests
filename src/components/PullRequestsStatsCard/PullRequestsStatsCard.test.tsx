@@ -29,6 +29,7 @@ import { githubPullRequestsApiRef } from '../..';
 import { GithubPullRequestsClient } from '../../api';
 import { closedPullsRequestMock, entityMock } from '../../mocks/mocks';
 import PullRequestsStatsCard from './PullRequestsStatsCard';
+import { EntityProvider } from "@backstage/plugin-catalog-react";
 
 const mockGithubAuth = {
   getAccessToken: async (_: string[]) => 'test-token',
@@ -62,7 +63,9 @@ describe('PullRequestsCard', () => {
   it('should display an ovreview card with the data from the requests', async () => {
     const rendered = render(
       <ApiProvider apis={apis}>
-        <PullRequestsStatsCard entity={entityMock} />
+        <EntityProvider entity={entityMock}>
+          <PullRequestsStatsCard />
+        </EntityProvider>
       </ApiProvider>,
     );
     expect(await rendered.findByText('17 hours')).toBeInTheDocument();

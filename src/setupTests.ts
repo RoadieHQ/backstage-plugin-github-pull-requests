@@ -15,7 +15,7 @@
  */
 
 import '@testing-library/jest-dom';
-import fetch from 'node-fetch';
+import 'cross-fetch/polyfill';
 
 // @ts-ignore
-global.fetch = fetch;
+window.HTMLCanvasElement.prototype.getContext = () => {}
