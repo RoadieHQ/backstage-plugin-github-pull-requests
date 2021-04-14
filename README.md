@@ -19,14 +19,14 @@ yarn add @roadiehq/backstage-plugin-github-pull-requests
 
 ```ts
 // packages/app/src/plugins.ts
-export { plugin as GithubPullRequests } from '@roadiehq/backstage-plugin-github-pull-requests';
+export { githubPullRequestsPlugin } from '@roadiehq/backstage-plugin-github-pull-requests';
 ```
 
 3. Add plugin API to your Backstage instance:
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { EntityGithubPullRequestsContent, } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { EntityGithubPullRequestsContent } from '@roadiehq/backstage-plugin-github-pull-requests';
 ...
 
 const serviceEntityPage = (
@@ -35,6 +35,7 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/pull-requests" title="Pull Requests">
       <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
+    ...
   </EntityLayout>
 ```
 
@@ -50,16 +51,17 @@ const serviceEntityPage = (
 
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { PullRequestsStatsCard } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 
 ...
 
-const OverviewContent = ({ entity }: { entity: Entity }) => (
+const overviewContent = (
   <Grid container spacing={3}>
     ...
     <Grid item md={6}>
-      <PullRequestsStatsCard entity={entity} />
+      <EntityGithubPullRequestsOverviewCard />
     </Grid>
+    ...
   </Grid>
 );
 
