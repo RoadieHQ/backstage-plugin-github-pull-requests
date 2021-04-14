@@ -22,7 +22,7 @@ import { MissingAnnotationEmptyState } from '@backstage/core';
 import { useEntity } from "@backstage/plugin-catalog-react";
 
 export const isGithubPullRequestsAvailable = (entity: Entity) =>
-  entity?.metadata.annotations?.[GITHUB_PULL_REQUESTS_ANNOTATION];
+  Boolean(entity.metadata.annotations?.[GITHUB_PULL_REQUESTS_ANNOTATION]);
 
 type Props = {
   /** @deprecated The entity is now grabbed from context instead */
