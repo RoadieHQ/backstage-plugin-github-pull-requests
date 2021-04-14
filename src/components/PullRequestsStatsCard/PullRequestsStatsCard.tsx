@@ -15,7 +15,11 @@
  */
 
 import React, { useState } from 'react';
-import { InfoCard, StructuredMetadataTable } from '@backstage/core';
+import {
+  InfoCard,
+  InfoCardVariants,
+  StructuredMetadataTable
+} from '@backstage/core';
 import { useProjectName } from '../useProjectName';
 import { usePullRequestsStatistics } from '../usePullRequestsStatistics';
 import {
@@ -48,9 +52,10 @@ const useStyles = makeStyles(theme => ({
 type Props = {
   /** @deprecated The entity is now grabbed from context instead */
   entity?: Entity;
+  variant?: InfoCardVariants;
 };
 
-const PullRequestsStatsCard = (_props: Props) => {
+const PullRequestsStatsCard = (props: Props) => {
   const { entity } = useEntity();
   const classes = useStyles();
   const [pageSize, setPageSize] = useState<number>(20);
@@ -71,7 +76,8 @@ const PullRequestsStatsCard = (_props: Props) => {
   };
 
   return (
-    <InfoCard title="Pull requests statistics" className={classes.infoCard}>
+    <InfoCard
+      title="Pull requests statistics" className={classes.infoCard} variant={props.variant}>
       {loadingStatistics ? (
         <CircularProgress />
       ) : (
