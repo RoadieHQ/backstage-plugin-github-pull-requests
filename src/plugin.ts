@@ -29,6 +29,9 @@ export const entityContentRouteRef = createRouteRef({
 
 export const githubPullRequestsPlugin = createPlugin({
   id: 'github-pull-requests',
+  apis: [
+    createApiFactory(githubPullRequestsApiRef, new GithubPullRequestsClient()),
+  ],
   routes: {
     entityContent: entityContentRouteRef,
   },
